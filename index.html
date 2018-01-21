@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Drag Drop Files</title>
+    <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<meta charset=utf-8 />
+       
+        <style type="text/css">
+            
+                       body{
+             background-color: darksalmon;  
+               height: 100%;
+               display: table-cell;
+            vertical-align: middle;
+           } 
+           
+          
+    html {
+        display: table;
+        margin: auto;
+         
+      }
+          
+                #white{
+               margin-top: 50px;
+               background-color: ghostwhite;
+               height: 600px;
+               width: 400px;
+               border-radius: 25px;
+               padding: 10px;
+               margin-bottom: 50px;
+              font-family: helvetica, sans-serif;
+                
+           }
+        
+        .disp-image{
+
+height:50px;
+width:100px;
+}
+            
+#filedrag
+{
+	
+	font-weight: bold;
+	text-align: center;
+	padding: 1em 0;
+	margin: 1em 0;
+	color: #555;
+	border: 2px dashed #555;
+	border-radius: 7px;
+	cursor: default;
+}
+        </style>
+       
+
+    
+    
+    </head>
+    
+    <body>
+        
+        <div id="white">
+            <p style="color: red; text-align: center;font-size: 250%">File Upload</p>
+            
+            
+<form  method="POST" enctype="multipart/form-data">
+
+<fieldset>
+
+
+<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+
+<div>
+	<label for="fileselect">Browse a file to upload:</label> <br> 
+	<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" onchange="readURL(this);"  />
+	</div>
+ <br>
+<img id="blah" src="#" alt="your image" />
+    <br>
+		<div id="filedrag">or drop files here</div>
+
+
+<div id="submitbutton">
+	<button type="submit">Upload Files</button>
+</div>
+
+</fieldset>
+
+</form>
+
+
+        </div>
+        
+        <script type="text/javascript">
+        
+        
+        function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+        
+        </script>
+       
+        
+        
+    </body>
+    
+    
+    
+    
+</html>
